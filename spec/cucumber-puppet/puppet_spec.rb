@@ -33,7 +33,7 @@ describe CucumberPuppet do
 
   describe '#debug' do
     it 'sets puppet`s loglevel to debug' do
-      CucumberPuppet.new.debug
+      TestCucumberPuppet.new.debug
       Puppet::Util::Log.level.should == :debug
     end
   end
