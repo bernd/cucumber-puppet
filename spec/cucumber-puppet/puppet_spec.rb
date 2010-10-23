@@ -22,20 +22,19 @@ end
 describe CucumberPuppet do
   describe '#new' do
     it 'sets puppet`s logdestination to console' do
-      Puppet::Util::Log.should_receive(:newdestination).with(:console)
       TestCucumberPuppet.new
+      Puppet::Util::Log.destinations.should include(:console)
     end
     it 'sets puppet`s loglevel to notice' do
-      Puppet::Util::Log.should_receive(:level=).with(:notice)
       TestCucumberPuppet.new
+      Puppet::Util::Log.level.should == :notice
     end
   end
 
   describe '#debug' do
     it 'sets puppet`s loglevel to debug' do
-      c = TestCucumberPuppet.new
-      Puppet::Util::Log.should_receive(:level=).with(:debug)
-      c.debug
+      CucumberPuppet.new.debug
+      Puppet::Util::Log.level.should == :debug
     end
   end
 
